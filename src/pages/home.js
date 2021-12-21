@@ -9,7 +9,7 @@ export const Home = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch({ type: actionTypes.LOAD_DATA });
+        dispatch({ type: actionTypes.LOAD_ALL_NEWS });
     }, [dispatch])
 
     return (

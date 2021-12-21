@@ -1,18 +1,39 @@
-import {  call, put, takeEvery } from 'redux-saga/effects'
-import { actionTypes, loadDataSuccess, failure } from '../actions'
-import { getData } from '../../api/news'
+import { all, call, put, takeEvery } from 'redux-saga/effects'
+import { actionTypes, loadOneNewsSuccess, loadAllNewsSuccess, failure } from '../actions'
+import { getData, getOne } from '../../api/news'
 
-function* loadReceptsSaga() {
+function* loadAllNewsSaga() {
   try {
     const data = yield call(getData) 
-     yield put(loadDataSuccess(data))
+     yield put(loadAllNewsSuccess(data))
   } catch (err) {
      yield put(failure(err))
   }
 }
 
+function* loadOneNewsSaga({action}) {
+  try {
+    console.log("saga")
+    const data = yield call(getOne, action) 
+     yield put(loadOneNewsSuccess(data[0]))
+  } catch (err) {
+     yield put(failure(err))
+  }
+}
+
+function* watchLoadAllNewsSaga() {
+  yield takeEvery(actionTypes.LOAD_ALL_NEWS, loadAllNewsSaga)
+}
+
+function* watchLoadOneNewsSaga() {
+  yield takeEvery(actionTypes.LOAD_ONE_NEWS, loadOneNewsSaga)
+}
+
 function* rootSaga() {
-  yield takeEvery(actionTypes.LOAD_DATA, loadReceptsSaga)
+  yield all([
+    watchLoadAllNewsSaga(),
+    watchLoadOneNewsSaga()
+  ])
 }
 
 export default rootSaga

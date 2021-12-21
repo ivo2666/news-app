@@ -1,7 +1,9 @@
 export const actionTypes = {
     FAILURE: 'FAILURE',
-    LOAD_DATA: 'LOAD_DATA',
-    LOAD_DATA_SUCCESS: 'LOAD_DATA_SUCCESS',
+    LOAD_ONE_NEWS: 'LOAD_ONE_NEWS',
+    LOAD_ALL_NEWS: 'LOAD_ALL_NEWS',
+    LOAD_ALL_NEWS_SUCCESS: 'LOAD_ALL_NEWS_SUCCESS',
+    LOAD_ONE_NEWS_SUCCESS: 'LOAD_ONE_NEWS_SUCCESS',
   }
   
   export function failure(error) {
@@ -11,13 +13,23 @@ export const actionTypes = {
     }
   }
   
-  export function loadData() {
-    return { type: actionTypes.LOAD_DATA }
+  export function loadAllNews() {
+    return { type: actionTypes.LOAD_ALL_NEWS }
+  }
+
+  export function loadOneNews() {
+    return { type: actionTypes.LOAD_ONE_NEWS }
   }
   
-  export function loadDataSuccess(data) {
+  export function loadAllNewsSuccess(data) {
     return {
-      type: actionTypes.LOAD_DATA_SUCCESS,
+      type: actionTypes.LOAD_ALL_NEWS_SUCCESS,
+      data,
+    }
+  }
+  export function loadOneNewsSuccess(data) {
+    return {
+      type: actionTypes.LOAD_ONE_NEWS_SUCCESS,
       data,
     }
   }

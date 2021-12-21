@@ -2,6 +2,7 @@ import { actionTypes } from '../actions'
 
 const initialState = {
   data: [],
+  item: {},
   error: {},
 }
 
@@ -14,10 +15,16 @@ function reducer(state = initialState, action) {
         ...{ error: action.error },
       }
 
-    case actionTypes.LOAD_DATA_SUCCESS:
+    case actionTypes.LOAD_ALL_NEWS_SUCCESS:
       return {
         ...state,
         ...{ data: action.data },
+      }
+
+    case actionTypes.LOAD_ONE_NEWS_SUCCESS:
+      return {
+        ...state,
+        ...{ item: action.data },
       }
 
     default:

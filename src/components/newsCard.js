@@ -33,7 +33,7 @@ export function NewsCard({data}) {
   };
   return (
     <Card sx={{ maxWidth: 345, a: {textDecoration: "none", color: "inherit"} }}>
-      <Link to={`/details/${data.url}`}>
+      <Link to={`/details/${data.title}`}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
