@@ -20,9 +20,7 @@ export const getData = async () => {
 
 export const getOne = async (title) => {
   const query = `q=${title}`
-  console.log("getOne" + query)
   const res = await fetch(API_URL + query + paramsForOne.join());
-  console.log("getOne res" + res)
   const data = await res.json();
   return data.articles;
 };

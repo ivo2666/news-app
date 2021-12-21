@@ -13,6 +13,7 @@ import { red } from '@mui/material/colors';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from 'react-router-dom'
+import { CircularProgress, Grid } from '@mui/material';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -25,35 +26,39 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export function NewsCard({data}) {
+export function NewsCard({ data }) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  if (Object.keys(data).length < 1) {
+    return <Grid pt={10} container justifyContent="center"><CircularProgress size={100} /></Grid>
+  }
   return (
-    <Card sx={{ maxWidth: 345, a: {textDecoration: "none", color: "inherit"} }}>
+    <Card sx={{ maxWidth: 345, a: { textDecoration: "none", color: "inherit" } }}>
       <Link to={`/details/${data.title}`}>
-      <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            {data.source.name[0]}
-          </Avatar>
-        }
-        title={data.title}
-        subheader={data.author}
-      />
-      <CardMedia
-        component="img"
-        height="194"
-        image={data.urlToImage}
-        alt={data.title}
-      />
-      <CardContent>
-        <Typography variant="body2" color="text.secondary">
+        <CardHeader
+          avatar={
+            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+              {data.source.name[0]}
+            </Avatar>
+          }
+          title={data.title}
+          subheader={data.author}
+        />
+        <CardMedia
+          component="img"
+          height="194"
+          image={data.urlToImage}
+          alt={data.title}
+        />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
             {data.description}
           </Typography>
-      </CardContent>
+        </CardContent>
       </Link>
       <CardActions disableSpacing>
         <IconButton aria-label="share">

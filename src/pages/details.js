@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
+import { Card, CardContent, CardHeader, CardMedia, Grid, CircularProgress } from '@mui/material';
 import { actionTypes } from '../redux/actions';
 // import { NewsCard } from '../components'
 import { useSelector, useDispatch } from "react-redux";
@@ -10,11 +10,13 @@ export const Details = () => {
     const news = useSelector(state => state.item)
     const dispatch = useDispatch();
     useEffect(() => {
-        console.log('useEff')
         dispatch({ type: actionTypes.LOAD_ONE_NEWS, action: title });
-        console.log('after disp')
     }, [dispatch, title])
-    console.log(news)
+
+    if (Object.keys(news).length < 1) {
+        return <Grid pt={10} container justifyContent="center"><CircularProgress size={100} /></Grid>
+    }
+
     return (
         <div>
             {/* <Typography align='center' p={2} variant='h4'>{news?.title}</Typography> */}
@@ -25,7 +27,7 @@ export const Details = () => {
                 <CardMedia
                     component="img"
                     //height="194"
-                    sx={{width: '75%'}}
+                    sx={{ width: '75%' }}
                     image={news?.urlToImage}
                     alt={news?.title}
                 />

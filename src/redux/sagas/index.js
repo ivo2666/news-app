@@ -13,7 +13,6 @@ function* loadAllNewsSaga() {
 
 function* loadOneNewsSaga({action}) {
   try {
-    console.log("saga")
     const data = yield call(getOne, action) 
      yield put(loadOneNewsSuccess(data[0]))
   } catch (err) {
