@@ -35,14 +35,15 @@ export function NewsCard({ data }) {
 
   if (Object.keys(data).length < 1) {
     return <Grid pt={10} container justifyContent="center"><CircularProgress size={100} /></Grid>
-  }
+  };
+
   return (
     <Card sx={{ maxWidth: 345, a: { textDecoration: "none", color: "inherit" } }}>
       <Link to={`/details/${data.title}`}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              {data.source.name[0]}
+              {data.source?.name[0]}
             </Avatar>
           }
           title={data.title}
@@ -75,12 +76,11 @@ export function NewsCard({ data }) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>Published at: {data.publishedAt.split('T')[0]}</Typography>
+          <Typography paragraph>Published at: {data.publishedAt?.split('T')[0]}</Typography>
           <Typography paragraph>
-            Source: {data.source.name}
+            Source: {data.source?.name}
           </Typography>
           <Typography paragraph>
-
           </Typography>
         </CardContent>
       </Collapse>

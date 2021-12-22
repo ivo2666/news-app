@@ -3,7 +3,7 @@ import { actionTypes } from '../actions'
 const initialState = {
   data: [],
   item: {},
-  error: {},
+  error: "",
 }
 
 function reducer(state = initialState, action) {
