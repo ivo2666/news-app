@@ -31,7 +31,7 @@ export const Home = () => {
         setPagData(data.slice(curentPag - 10, curentPag - 1));
     };
 
-    if (data.length < 1) {
+    if (data?.length < 1) {
         return <Grid pt={10} container justifyContent="center"><CircularProgress size={100} /></Grid>
     };
 
