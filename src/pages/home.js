@@ -18,7 +18,7 @@ export const Home = () => {
     }, [dispatch]);
 
     useEffect(() => {
-        setPagData(data.slice(0, 9));
+        setPagData(data?.slice(0, 9));
     }, [data]);
 
     if (error) {
@@ -28,7 +28,7 @@ export const Home = () => {
     const handleChange = (e, p) => {
         const curentPag = Number(p + "0");
         setPage(p);
-        setPagData(data.slice(curentPag - 10, curentPag - 1));
+        setPagData(data?.slice(curentPag - 10, curentPag - 1));
     };
 
     if (data?.length < 1) {
@@ -38,13 +38,13 @@ export const Home = () => {
     return (
         <>
             <Grid container justifyContent="space-around" p={4} rowSpacing={3}>
-                {pagData.map(item => {
+                {pagData?.map(item => {
                     return (<Grid item key={item.url} ><NewsCard data={item} /></Grid>)
                 })}
             </Grid>
             <Grid container justifyContent="center">
                 <Pagination
-                    count={data.length / 10}
+                    count={data ? data.length / 10 : 10}
                     size="large"
                     page={page}
                     variant="outlined"

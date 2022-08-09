@@ -1,3 +1,5 @@
+import mockData from './mock-data'
+
 const paramsForAll = [
   'domains=thenextweb.com',
   '&pageSize=30',
@@ -12,10 +14,12 @@ const paramsForOne = [
 const API_URL =
 'https://newsapi.org/v2/everything?';
 
+
 export const getData = async () => {
   const res = await fetch(API_URL + paramsForAll.join());
   const data = await res.json();
-  return data.articles;
+
+  return data.articles || mockData ;
 };
 
 export const getOne = async (title) => {
