@@ -17,7 +17,7 @@ export const Details = () => {
         throw new Error(error);
     };
 
-    if (Object.keys(news).length < 1) {
+    if (!news ) {
         return <Grid pt={10} container justifyContent="center"><CircularProgress size={100} /></Grid>
     };
 
