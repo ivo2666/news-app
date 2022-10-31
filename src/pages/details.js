@@ -5,13 +5,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 
 export const Details = () => {
-    const { title } = useParams();
+    const { uuid } = useParams();
     const error = useSelector(state => state.error);
     const news = useSelector(state => state.item);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch({ type: actionTypes.LOAD_ONE_NEWS, action: title });
-    }, [dispatch, title]);
+        dispatch({ type: actionTypes.LOAD_ONE_NEWS, action: uuid });
+    }, [dispatch, uuid]);
 
     if (error) {
         throw new Error(error);
@@ -30,11 +30,11 @@ export const Details = () => {
                 <CardMedia
                     component="img"
                     sx={{width: {xs:"100%", sm: "600px", lg:"900px"} }}
-                    image={news?.urlToImage}
+                    image={news?.image_url}
                     alt={news?.title}
                 />
                 <CardContent>
-                    {news?.content}
+                    {news?.description}
                 </CardContent>
             </Card>
         </div>

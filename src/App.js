@@ -13,7 +13,7 @@ function App() {
   <ButtonAppBar />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/details/:title" element={<Details />} />
+          <Route path="/details/:uuid" element={<Details />} />
         </Routes>
     </Router>    
   );

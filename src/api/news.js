@@ -1,30 +1,22 @@
-import mockData from './mock-data'
+import mockData from "./mock-data";
 
-const paramsForAll = [
-  'domains=thenextweb.com',
-  '&pageSize=30',
-  '&apiKey=275bf7558f2a4ada82089bd012922af0',
-];
-
-const paramsForOne = [
-  '&domains=thenextweb.com',
-  '&apiKey=275bf7558f2a4ada82089bd012922af0',
+const params = [
+  "locale=bg",
+  "language=bg",
 ]
 
-const API_URL =
-'https://newsapi.org/v2/everything?';
-
-
 export const getData = async () => {
-  const res = await fetch(API_URL + paramsForAll.join());
+  const res = await fetch(`/api/news?${params.join("&")}`);
   const data = await res.json();
-
-  return data.articles || mockData ;
+  console.log(data)
+  return data || mockData;
 };
 
-export const getOne = async (title) => {
-  const query = `q=${title}`
-  const res = await fetch(API_URL + query + paramsForOne.join());
+export const getOne = async (uuid) => {
+  const res = await fetch(`/api/news/${uuid}`);
   const data = await res.json();
-  return data?.articles || [mockData.find(n => n.title === title)];
+  if(!data || data.error) {
+    return  mockData.find((n) => n.uuid === Number(uuid))
+  }
+  return data
 };

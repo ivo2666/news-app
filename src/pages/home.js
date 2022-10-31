@@ -45,7 +45,7 @@ export const Home = () => {
             </Grid>
             <Box width="100%" position="absolute" bottom="20px" >
                 <Pagination
-                    count={data ? Math.floor(data.length / 10) : 10}
+                    count={data?.length > 10 ? Math.floor(data.length / 10) : 1}
                     sx={{margin:"auto", width: "fit-content"}}
                     size="large"
                     page={page}
