@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { NewsCard } from '../components';
 import { useSelector, useDispatch } from "react-redux";
 import { actionTypes } from '../redux/actions';
-import { CircularProgress, Grid, Pagination } from '@mui/material';
+import { Box, CircularProgress, Grid, Pagination } from '@mui/material';
 
 
 export const Home = () => {
@@ -36,22 +36,24 @@ export const Home = () => {
     };
 
     return (
-        <>
-            <Grid container justifyContent="space-around" p={4} rowSpacing={3}>
+        <Box positon="relative">
+            <Grid container justifyContent="space-around" height="calc(100vh - 130px)" overflow="auto" p={3} m={0}  rowSpacing={3}>
                 {pagData?.map(item => {
                     return (<Grid item key={item.url} ><NewsCard data={item} /></Grid>)
                 })}
+               
             </Grid>
-            <Grid container justifyContent="center">
+            <Box width="100%" position="absolute" bottom="20px" >
                 <Pagination
-                    count={data ? data.length / 10 : 10}
+                    count={data ? Math.floor(data.length / 10) : 10}
+                    sx={{margin:"auto", width: "fit-content"}}
                     size="large"
                     page={page}
                     variant="outlined"
                     shape="rounded"
                     onChange={handleChange}
                 />
-            </Grid>
-        </>
+            </Box>
+        </Box>
     )
 }

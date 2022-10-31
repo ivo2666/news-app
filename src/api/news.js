@@ -26,6 +26,5 @@ export const getOne = async (title) => {
   const query = `q=${title}`
   const res = await fetch(API_URL + query + paramsForOne.join());
   const data = await res.json();
-  
   return data?.articles || [mockData.find(n => n.title === title)];
 };

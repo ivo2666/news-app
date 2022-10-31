@@ -29,7 +29,7 @@ export const Details = () => {
                 } />
                 <CardMedia
                     component="img"
-                    sx={{ width: '75%' }}
+                    sx={{width: {xs:"100%", sm: "600px", lg:"900px"} }}
                     image={news?.urlToImage}
                     alt={news?.title}
                 />
