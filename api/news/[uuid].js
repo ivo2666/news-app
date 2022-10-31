@@ -10,6 +10,6 @@ export default async function handler(request, response) {
       .join("&")}&api_token=${process.env.REACT_APP_API_KEY}`
   );
 
-  const { data } = await res.json();
+  const data  = await res.json();
   return response.status(200).json({ data });
 }
