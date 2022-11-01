@@ -12,8 +12,8 @@ export const getData = async () => {
 };
 
 export const getOne = async (uuid) => {
-  const res = await fetch(`/api/news/${uuid}`);
-  const data = await res.json();
+  const res = await fetch(`/api/news/uuid/${uuid}`);
+  const {data} = await res.json();
   if(!data || data.error) {
     return  mockData.find((n) => n.uuid === Number(uuid))
   }
