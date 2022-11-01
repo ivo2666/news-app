@@ -6,7 +6,7 @@ const params = [
 ]
 
 export const getData = async () => {
-  const res = await fetch(`/api/news?${params.join("&")}`);
+  const res = await fetch(`/api/news/all?${params.join("&")}`);
   const {data} = await res.json();
   return data || mockData;
 };
