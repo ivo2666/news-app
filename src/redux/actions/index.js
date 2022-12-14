@@ -4,6 +4,7 @@ export const actionTypes = {
     LOAD_ALL_NEWS: 'LOAD_ALL_NEWS',
     LOAD_ALL_NEWS_SUCCESS: 'LOAD_ALL_NEWS_SUCCESS',
     LOAD_ONE_NEWS_SUCCESS: 'LOAD_ONE_NEWS_SUCCESS',
+    CLEAR_ONE_NEWS_STATE: 'STATE_ONE_NEWS_STATE',
   }
   
   export function failure(error) {
@@ -31,5 +32,10 @@ export const actionTypes = {
     return {
       type: actionTypes.LOAD_ONE_NEWS_SUCCESS,
       data,
+    }
+  }
+  export function clearOneNewsState() {
+    return {
+      type: actionTypes.CLEAR_ONE_NEWS_STATE,
     }
   }

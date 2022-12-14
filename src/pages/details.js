@@ -11,13 +11,15 @@ export const Details = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch({ type: actionTypes.LOAD_ONE_NEWS, action: uuid });
+        return () => {
+            dispatch({ type: actionTypes.CLEAR_ONE_NEWS_STATE });
+        }
     }, [dispatch, uuid]);
-
     if (error) {
         throw new Error(error);
     };
 
-    if (!news ) {
+    if (!Object.keys(news).length) {
         return <Grid pt={10} container justifyContent="center"><CircularProgress size={100} /></Grid>
     };
 

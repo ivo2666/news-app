@@ -26,6 +26,11 @@ function reducer(state = initialState, action) {
         ...state,
         ...{ item: action.data },
       }
+    case actionTypes.CLEAR_ONE_NEWS_STATE:
+      return {
+        ...state,
+        ...{ item: {} },
+      }
 
     default:
       return state
