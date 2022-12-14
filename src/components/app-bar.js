@@ -3,9 +3,9 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+// import Button from "@mui/material/Button";
+// import IconButton from "@mui/material/IconButton";
+// import MenuIcon from "@mui/icons-material/Menu";
 import { Link } from "react-router-dom";
 
 export default function ButtonAppBar() {
@@ -13,7 +13,7 @@ export default function ButtonAppBar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -21,13 +21,13 @@ export default function ButtonAppBar() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Link to="/" style={{ flexGrow: 1, display: "block", textDecoration: "none", color: "inherit" }}>
             <Typography variant="h6" component="div" >
               News
             </Typography>
           </Link>
-          <Button color="inherit">Login</Button>
+          {/* <Button color="inherit">Login</Button> */}
         </Toolbar>
       </AppBar>
     </Box>
